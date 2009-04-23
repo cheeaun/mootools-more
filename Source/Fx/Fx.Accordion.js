@@ -9,7 +9,7 @@ Script: Fx.Accordion.js
 		Valerio Proietti
 */
 
-Fx.Accordion = new Class({
+var Accordion = Fx.Accordion = new Class({
 
 	Extends: Fx.Elements,
 
@@ -73,7 +73,9 @@ Fx.Accordion = new Class({
 		if (this.options.fixedWidth) element.fullWidth = this.options.fixedWidth;
 		if (this.options.fixedHeight) element.fullHeight = this.options.fixedHeight;
 		element.setStyle('overflow', 'hidden');
-		if (!test) for (var fx in this.effects) element.setStyle(fx, 0);
+		if (!test){
+			for (var fx in this.effects) element.setStyle(fx, 0);
+		}
 		return this;
 	},
 
