@@ -20,6 +20,7 @@ var OverText = new Class({
 		onFocus: $empty()
 		onTextHide: $empty(textEl, inputEl),
 		onTextShow: $empty(textEl, inputEl), */
+		element: 'label',
 		positionOptions: {
 			position: 'upperLeft',
 			edge: 'upperLeft',
@@ -51,8 +52,8 @@ var OverText = new Class({
 	attach: function(){
 		var val = this.options.textOverride || this.element.get('alt') || this.element.get('title');
 		if (!val) return;
-		this.text = new Element('div', {
-			'class': 'overTxtDiv',
+		this.text = new Element(this.options.element, {
+			'class': 'overTxtLabel',
 			styles: {
 				lineHeight: 'normal',
 				position: 'absolute'
@@ -62,6 +63,7 @@ var OverText = new Class({
 				click: this.hide.pass(true, this)
 			}
 		}).inject(this.element, 'after');
+		if (this.options.element == 'label') this.text.set('for', this.element.get('id'));
 		this.element.addEvents({
 			focus: this.focus,
 			blur: this.assert,
@@ -155,6 +157,6 @@ OverText.update = function(){
 
 if (window.Fx && Fx.Reveal) {
 	Fx.Reveal.implement({
-		hideInputs: Browser.Engine.trident ? 'select, input, textarea, object, embed, .overTxtDiv' : false
+		hideInputs: Browser.Engine.trident ? 'select, input, textarea, object, embed, .overTxtLabel' : false
 	});
 }
