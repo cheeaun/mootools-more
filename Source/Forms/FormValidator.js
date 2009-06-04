@@ -113,7 +113,7 @@ var FormValidator = new Class({
 		this.warningPrefix = $lambda(this.options.warningPrefix)();
 		this.errorPrefix = $lambda(this.options.errorPrefix)();
 		if (this.options.evaluateOnSubmit) this.element.addEvent('submit', this.onSubmit);
-		if (this.options.evaluateFieldsOnBlur) this.watchFields(this.getFields());
+		if (this.options.evaluateFieldsOnBlur || this.options.evaluateFieldsOnChange) this.watchFields(this.getFields());
 	},
 
 	toElement: function(){
@@ -126,6 +126,7 @@ var FormValidator = new Class({
 
 	watchFields: function(fields){
 		fields.each(function(el){
+			if (this.options.evaluateFieldsOnBlur)
 				el.addEvent('blur', this.validationMonitor.pass([el, false], this));
 			if (this.options.evaluateFieldsOnChange)
 				el.addEvent('change', this.validationMonitor.pass([el, true], this));
@@ -349,7 +350,7 @@ FormValidator.addAllThese([
 	['validate-integer', {
 		errorMsg: FormValidator.getMsg.pass('integer'),
 		test: function(element){
-			return FormValidator.getValidator('IsEmpty').test(element) || (/^-?[1-9]\d*$/).test(element.get('value'));
+			return FormValidator.getValidator('IsEmpty').test(element) || (/^(-?[1-9]\d*|0)$/).test(element.get('value'));
 		}
 	}],
 
