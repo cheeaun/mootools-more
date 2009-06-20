@@ -1,15 +1,16 @@
-UnitTester.site = 'MooTools More';
-UnitTester.title = 'Unit Tests';
-
-window.addEvent('load', function(){
-	var sources = {
-		mootoolsCore: '../assets/mootools-core',
-		mootoolsMore: '../'
-	};
-
-	new UnitTester(sources, {
-		'mootools-more': 'UserTests/'
-	}, {
-		autoplay: true
-	});
-});
+var UnitTester = {
+	site: 'MooTools More',
+	title: 'Unit Tests',
+	path: 'UnitTester/',
+	ready: function(){
+		var sources = {
+			mootoolsCore: '../assets/core',
+			mootoolsMore: '..'
+		};
+		new UnitTester(sources, {
+			'mootools-more': 'UserTests'
+		}, {
+			autoplay: true
+		});
+	}
+};
