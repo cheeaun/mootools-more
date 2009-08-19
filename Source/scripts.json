@@ -81,12 +81,12 @@
 		},
 
 		"URI": {
-			"deps": ["More", "Function", "Array", "Hash", "Class.Refactor"],
+			"deps": ["More", "Function", "Array", "Hash", "String.QueryString"],
 			"desc": "Provides methods useful in managing the window location and uris."
 		},
 
 		"URI.Relative": {
-			"deps": ["More", "URI"],
+			"deps": ["More", "URI", "Class.Refactor"],
 			"desc": "Extends the URI class to add methods for computing relative and absolute urls."
 		}
 
@@ -97,6 +97,11 @@
 		"Element.Forms": {
 			"deps": ["More", "Element"],
 			"desc": "Extends the Element native object to include methods useful in managing inputs."
+		},
+
+		"Elements.From": {
+			"deps": ["Element"],
+			"desc": "Adds a static method to Element to parse html."
 		},
 
 		"Element.Delegation": {
@@ -279,14 +284,35 @@
 
 	"Interface": {
 
+		"HtmlTable":{
+			"deps":["Class.Extras", "Selectors"],
+			"desc":"Builds table elements with methods to add rows quickly."
+		},
+
+		"HtmlTable.Zebra": {
+			"deps":["HtmlTable"],
+			"desc":"Adds stripes to an HTML table's rows."
+		},
+
+		"HtmlTable.Sort": {
+			"deps":["HtmlTable.Zebra", "Element.Delegation", "Hash", "Date"],
+			"desc":"Adds the ability to sort the columns of a HtmlTable.Zebra instance."
+		},
+
+		"HtmlTable.Select": {
+			"deps":["HtmlTable.Sort", "Keyboard"],
+			"desc":"Adds the ability to highlight and select rows on a HtmlTable.Sort instance."
+		},
+
 		"Keyboard": {
 			"deps": ["More", "Class.Extras", "Element.Event"],
 			"desc": "Provides enhanced group key event management."
 		},
 
 		"Mask": {
-			"deps": ["More", "Class.Extras", "Element.Style", "Element.Event", "Element.Position", "IframeShim"],
-			"desc": "Creates a mask over a specified element."
+			"deps": ["More", "Class.Extras", "Element.Style", "Element.Event", "Element.Position", "IframeShim", "Class.Binds"],
+			"desc": "Creates a mask over a specified element.",
+			"styles": true
 		},
 
 		"Scroller": {
