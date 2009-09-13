@@ -8,8 +8,13 @@
 		},
 
 		"Depender": {
-			"deps": ["More", "Element.Event", "Request.JSON"],
-			"desc": "A dependency loader for the MooTools library."
+			"deps": ["More", "Class.Extras", "Element.Event"],
+			"desc": "A stand alone dependency loader for the MooTools library."
+		},
+
+		"Depender.Client": {
+			"deps": ["More", "Class.Extras", "Element.Event"],
+			"desc": "A dependency loader for the MooTools library that integrates with <a href=\"http://github.com/anutron/mootools-depender/tree/\">the server side Depender library</a>."
 		},
 
 		"Lang": {
@@ -81,7 +86,7 @@
 		},
 
 		"URI": {
-			"deps": ["More", "Function", "Array", "Hash", "String.QueryString"],
+			"deps": ["More", "String.QueryString", "Selectors"],
 			"desc": "Provides methods useful in managing the window location and uris."
 		},
 
@@ -245,7 +250,7 @@
 			"deps": ["More", "Request"],
 			"desc": "Manages a group of Request instances so that connections are queued."
 		},
-
+		
 		"Request.Periodical": {
 			"deps": ["More", "Request", "Class.Refactor"],
 			"desc": "Requests the same url at a time interval that increases when no data is returned from the requested server."
@@ -290,17 +295,17 @@
 		},
 
 		"HtmlTable.Zebra": {
-			"deps":["HtmlTable"],
+			"deps":["HtmlTable", "Class.Refactor"],
 			"desc":"Adds stripes to an HTML table's rows."
 		},
 
 		"HtmlTable.Sort": {
-			"deps":["HtmlTable.Zebra", "Element.Delegation", "Hash", "Date"],
+			"deps":["HtmlTable", "Element.Delegation", "Hash", "Date", "Class.Refactor"],
 			"desc":"Adds the ability to sort the columns of a HtmlTable.Zebra instance."
 		},
 
 		"HtmlTable.Select": {
-			"deps":["HtmlTable.Sort", "Keyboard"],
+			"deps":["HtmlTable", "Keyboard", "Class.Refactor", "Element.Delegation"],
 			"desc":"Adds the ability to highlight and select rows on a HtmlTable.Sort instance."
 		},
 
