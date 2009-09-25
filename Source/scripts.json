@@ -144,7 +144,7 @@
 		},
 
 		"Form.Validator": {
-			"deps": ["More", "Lang", "Class.Extras", "Class.Binds", "Selectors", "Element.Event", "Element.Style", "JSON", "Date", "Element.Forms", "Form.Validator.English"],
+			"deps": ["More", "Lang", "Class.Extras", "Class.Binds", "Selectors", "Element.Event", "Element.Style", "JSON", "Date", "Element.Forms", "Form.Validator.English", "Element.Shortcuts"],
 			"desc": "A css-class based form validation system."
 		},
 
@@ -246,7 +246,7 @@
 		},
 		
 		"Request.Periodical": {
-			"deps": ["More", "Request", "Class.Refactor"],
+			"deps": ["More", "Request"],
 			"desc": "Requests the same url at a time interval that increases when no data is returned from the requested server."
 		}
 
