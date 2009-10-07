@@ -20,6 +20,8 @@ Element.implement({
 		if (options && ($defined(options.x) || $defined(options.y))) return original ? original.apply(this, arguments) : this;
 		$each(options||{}, function(v, k){ if (!$defined(v)) delete options[k]; });
 		options = $merge({
+			// minimum: { x: 0, y: 0 },
+			// maximum: { x: 0, y: 0},
 			relativeTo: document.body,
 			position: {
 				x: 'center', //left, center, right
@@ -76,11 +78,9 @@ Element.implement({
 				calc = rel == document.body ? window.getScroll() : rel.getPosition(),
 				top = calc.y, left = calc.x;
 
-		if (Browser.Engine.trident){
-			var scrolls = rel.getScrolls();
-			top += scrolls.y;
-			left += scrolls.x;
-		}
+		var scrolls = rel.getScrolls();
+		top += scrolls.y;
+		left += scrolls.x;
 
 		var dim = this.getDimensions({computeSize: true, styles:['padding', 'border','margin']});
 		if (options.ignoreMargins){
@@ -146,6 +146,13 @@ Element.implement({
 			left: ((pos.x >= 0 || parentPositioned || options.allowNegative) ? pos.x : 0).toInt(),
 			top: ((pos.y >= 0 || parentPositioned || options.allowNegative) ? pos.y : 0).toInt()
 		};
+		var xy = {left: 'x', top: 'y'};
+		['minimum', 'maximum'].each(function(minmax) {
+			['left', 'top'].each(function(lr) {
+				var val = options[minmax] ? options[minmax][xy[lr]] : null;
+				if (val != null && pos[lr] < val) pos[lr] = val;
+			});
+		});
 		if (rel.getStyle('position') == 'fixed' || options.relFixedPosition){
 			var winScroll = window.getScroll();
 			pos.top+= winScroll.y;
@@ -156,7 +163,7 @@ Element.implement({
 			pos.top-= relScroll.y;
 			pos.left-= relScroll.x;
 		}
-
+		
 		if (options.returnPos) return pos;
 		else this.setStyles(pos);
 		return this;
