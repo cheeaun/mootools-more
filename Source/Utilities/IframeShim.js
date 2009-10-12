@@ -62,7 +62,7 @@ var IframeShim = new Class({
 				this[this.options.display ? 'show' : 'hide']();
 				this.fireEvent('inject');
 			}).bind(this);
-			if (this.options.browsers && !IframeShim.ready) window.addEvent('load', inject);
+			if (IframeShim.ready) window.addEvent('load', inject);
 			else inject();
 		} else {
 			this.position = this.hide = this.show = this.dispose = $lambda(this);
@@ -71,7 +71,9 @@ var IframeShim = new Class({
 
 	position: function(){
 		if (!IframeShim.ready || !this.shim) return this;
-		var size = this.element.measure(function(){ return this.getSize(); });
+		var size = this.element.measure(function(){ 
+			return this.getSize(); 
+		});
 		if (this.options.margin != undefined){
 			size.x = size.x - (this.options.margin * 2);
 			size.y = size.y - (this.options.margin * 2);

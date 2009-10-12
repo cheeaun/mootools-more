@@ -15,14 +15,15 @@ var Accordion = Fx.Accordion = new Class({
 
 	options: {/*
 		onActive: $empty(toggler, section),
-		onBackground: $empty(toggler, section),*/
+		onBackground: $empty(toggler, section),
+		fixedHeight: false,
+		fixedWidth: false,
+		*/
 		display: 0,
 		show: false,
 		height: true,
 		width: false,
 		opacity: true,
-		fixedHeight: false,
-		fixedWidth: false,
 		alwaysHide: false,
 		trigger: 'click',
 		initialDisplayFx: true,
@@ -68,7 +69,9 @@ var Accordion = Fx.Accordion = new Class({
 		this.togglers.include(toggler);
 		this.elements.include(element);
 		var idx = this.togglers.indexOf(toggler);
-		toggler.addEvent(this.options.trigger, this.display.bind(this, idx));
+		var displayer = this.display.bind(this, idx);
+		toggler.store('accordion:display', displayer);
+		toggler.addEvent(this.options.trigger, displayer);
 		if (this.options.height) element.setStyles({'padding-top': 0, 'border-top': 'none', 'padding-bottom': 0, 'border-bottom': 'none'});
 		if (this.options.width) element.setStyles({'padding-left': 0, 'border-left': 'none', 'padding-right': 0, 'border-right': 'none'});
 		element.fullOpacity = 1;
@@ -81,12 +84,22 @@ var Accordion = Fx.Accordion = new Class({
 		return this;
 	},
 
+	detach: function(){
+		this.togglers.each(function(toggler) {
+			toggler.removeEvent(this.options.trigger, toggler.retrieve('accordion:display'));
+		}, this);
+	},
+
 	display: function(index, useFx){
 		if (!this.check(index, useFx)) return this;
 		useFx = $pick(useFx, true);
 		if (this.options.returnHeightToAuto) {
 			var prev = this.elements[this.previous];
-			if (prev) for (var fx in this.effects) prev.setStyle(fx, prev[this.effects[fx]]);
+			if (prev) {
+				for (var fx in this.effects) {
+					prev.setStyle(fx, prev[this.effects[fx]]);
+				}
+			}
 		}
 		index = ($type(index) == 'element') ? this.elements.indexOf(index) : index;
 		if ((this.timer && this.options.wait) || (index === this.previous && !this.options.alwaysHide)) return this;

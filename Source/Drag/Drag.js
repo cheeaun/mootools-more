@@ -67,6 +67,7 @@ var Drag = new Class({
 	},
 
 	start: function(event){
+		if (event.rightClick) return;
 		if (this.options.preventDefault) event.preventDefault();
 		this.mouse.start = event.page;
 		this.fireEvent('beforeStart', this.element);
@@ -117,8 +118,11 @@ var Drag = new Class({
 				}
 			}
 			if (this.options.grid[z]) this.value.now[z] -= ((this.value.now[z] - (this.limit[z][0]||0)) % this.options.grid[z]);
-			if (this.options.style) this.element.setStyle(this.options.modifiers[z], this.value.now[z] + this.options.unit);
-			else this.element[this.options.modifiers[z]] = this.value.now[z];
+			if (this.options.style) {
+				this.element.setStyle(this.options.modifiers[z], this.value.now[z] + this.options.unit);
+			} else {
+				this.element[this.options.modifiers[z]] = this.value.now[z];
+			}
 		}
 		this.fireEvent('drag', [this.element, event]);
 	},

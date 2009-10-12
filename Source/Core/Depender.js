@@ -25,35 +25,8 @@ var Depender = {
 		noCache: false,
 		log: false,*/
 		loadedSources: [],
-		loadedScripts: ['Core', 'Browser', 'Array', 'String', 'Function', 'Number', 'Hash', 'Element', 'Event', 'Element.Event', 'Class', 'DomReady', 'Class.Extras', 'Request', 'JSON', 'Request.JSON', 'More', 'Depender'],
+		loadedScripts: ['Core', 'Browser', 'Array', 'String', 'Function', 'Number', 'Hash', 'Element', 'Event', 'Element.Event', 'Class', 'DomReady', 'Class.Extras', 'Request', 'JSON', 'Request.JSON', 'More', 'Depender', 'Log'],
 		useScriptInjection: true
-	},
-
-	resetLog: function(){
-		this.logged.empty();
-		return this;
-	},
-
-	enableLog: function(){
-		this.log = function(){
-			console.log.apply(console, arguments);
-			return this;
-		};
-		this.log('enabling depender log.');
-		this.logged.each(function(logged){
-			this.log.apply(this, logged);
-		}, this);
-		return this.resetLog();
-	},
-
-	logged:[],
-
-	disableLog: function(){
-		this.log = function(){
-			this.logged.push(arguments);
-			return this;
-		};
-		return this;
 	},
 
 	loaded: [],
@@ -63,6 +36,7 @@ var Depender = {
 	libs: {},
 
 	include: function(libs){
+		this.log('include: ', libs);
 		this.mapLoaded = false;
 		var loader = function(data){
 			this.libs = $merge(this.libs, data);
@@ -132,6 +106,7 @@ var Depender = {
 		}
 		this.log('loading source: ', source);
 		this.request(this.cleanDoubleSlash(source + '/scripts.json'), function(result){
+			this.log('loaded source: ', source);
 			this.libs[lib].files = result;
 			this.dataLoaded();
 		}.bind(this));
@@ -256,17 +231,23 @@ var Depender = {
 		this.loading = true;
 		var scriptPath = this.getPath(script);
 		if (this.options.useScriptInjection){
+			this.log('injecting script: ', scriptPath);
+			var loaded = function(){
+				this.log('loaded script: ', scriptPath);
+				finish();
+			}.bind(this);
 			new Element('script', {
 				src: scriptPath + (this.options.noCache ? '?noCache=' + new Date().getTime() : ''),
 				events: {
-					load: function(){
-						this.log('loaded script: ', scriptPath);
-						finish();
-					}.bind(this),
+					load: loaded,
+					readystatechange: function(){
+						if (['loaded', 'complete'].contains(this.readyState)) loaded();
+					},
 					error: error
 				}
 			}).inject(this.options.target || document.head);
 		} else {
+			this.log('requesting script: ', scriptPath);
 			new Request({
 				url: scriptPath,
 				noCache: this.options.noCache,
@@ -290,6 +271,7 @@ var Depender = {
 	},
 
 	scriptLoaded: function(script){
+		this.log('loaded script: ', script);
 		this.scriptsState[script] = true;
 		this.check();
 		var loaded = this.getLoadedScripts();
@@ -330,6 +312,7 @@ var Depender = {
 
 $extend(Depender, new Events);
 $extend(Depender, new Options);
+$extend(Depender, new Log);
 
 Depender._setOptions = Depender.setOptions;
 Depender.setOptions = function(){
@@ -337,5 +320,3 @@ Depender.setOptions = function(){
 	if (this.options.log) Depender.enableLog();
 	return this;
 };
-
-Depender.disableLog();

@@ -54,7 +54,7 @@ Script: Keyboard.js
 			onActivate: $empty,
 			onDeactivate: $empty,
 			*/
-			defaultEventType: 'keyup',
+			defaultEventType: 'keydown',
 			active: false,
 			events: {}
 		},
@@ -80,7 +80,6 @@ Script: Keyboard.js
 				this.activeKB.handle(event, type);
 				if (event.preventKeyboardPropagation) return;
 			}
-			
 			this.fireEvent(type, event);
 			
 			if (!bubbles && this.activeKB) this.activeKB.handle(event, type);
@@ -146,6 +145,7 @@ Script: Keyboard.js
 		instances: [],
 
 		trace: function(){
+			this.enableLog();
 			var item = this;
 			this.log('the following items have focus: ');
 			while (item) {
@@ -176,7 +176,7 @@ Script: Keyboard.js
 		Keyboard.manager.handle(event, event.type + ':' + mods + event.key);
 	};
 	
-	window.addEvents({
+	document.addEvents({
 		'keyup': handler,
 		'keydown': handler
 	});
