@@ -1,13 +1,22 @@
 /*
-Script: Form.Validator.Portuguese.BR.js
-	Form.Validator messages in Portuguese-BR.
+---
 
-	License:
-		MIT-style license.
+script: Form.Validator.Portuguese.BR.js
 
-	Authors:
-		Fábio Miranda Costa
+description: Form.Validator messages in Portuguese-BR.
 
+license: MIT-style license
+
+authors:
+- Fábio Miranda Costa
+
+requires:
+- /Lang
+- /Form.Validator.Portuguese
+
+provides: [Form.Validator.Portuguese.BR]
+
+...
 */
 
 MooTools.lang.set('pt-BR', 'Form.Validator', {

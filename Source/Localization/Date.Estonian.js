@@ -1,13 +1,22 @@
 /*
-Script: Date.Estonian.js
-	Date messages for Estonian.
+---
 
-	License:
-		MIT-style license.
+script: Date.Estonian.js
 
-	Authors:
-		Kevin Valdek
+description: Date messages for Estonian.
 
+license: MIT-style license
+
+authors:
+- Kevin Valdek
+
+requires:
+- /Lang
+- /Date
+
+provides: [Date.Estonian]
+
+...
 */
 
 MooTools.lang.set('et-EE', 'Date', {

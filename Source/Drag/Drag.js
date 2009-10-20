@@ -1,14 +1,26 @@
 /*
-Script: Drag.js
-	The base Drag Class. Can be used to drag and resize Elements using mouse events.
+---
 
-	License:
-		MIT-style license.
+script: Drag.js
 
-	Authors:
-		Valerio Proietti
-		Tom Occhinno
-		Jan Kassens
+description: The base Drag Class. Can be used to drag and resize Elements using mouse events.
+
+license: MIT-style license
+
+authors:
+- Valerio Proietti
+- Tom Occhinno
+- Jan Kassens
+
+requires:
+- core:1.2.4/Events
+- core:1.2.4/Options
+- core:1.2.4/Element.Event
+- core:1.2.4/Element.Style
+- /MooTools.More
+
+provides: [Drag]
+
 */
 
 var Drag = new Class({

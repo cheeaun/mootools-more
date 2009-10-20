@@ -1,13 +1,25 @@
 /*
-Script: Form.Validator.Chinese.js
-	Form.Validator messages in chinese (both simplified and traditional).
+---
 
-	License:
-		MIT-style license.
+script: Form.Validator.Chinese.js
 
-	Authors:
-		陈桂军 - guidy <at> ixuer [dot] net
+description: Form.Validator messages in chinese (both simplified and traditional).
 
+license: MIT-style license
+
+authors:
+- 陈桂军 - guidy <at> ixuer [dot] net
+
+requires:
+- /Lang
+- /Form.Validator
+
+provides: [Form.Validator.Chinese]
+
+...
+*/
+
+/*
 In Chinese:
 ------------
 需要指出的是：

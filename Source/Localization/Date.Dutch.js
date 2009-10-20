@@ -1,13 +1,22 @@
 /*
-Script: Date.Dutch.js
-	Date messages in Dutch.
+---
 
-	License:
-		MIT-style license.
+script: Date.Dutch.js
 
-	Authors:
-		Lennart Pilon
+description: Date messages in Dutch.
 
+license: MIT-style license
+
+authors:
+- Lennart Pilon
+
+requires:
+- /Lang
+- /Date
+
+provides: [Date.Dutch]
+
+...
 */
 
 MooTools.lang.set('nl-NL', 'Date', {
@@ -46,11 +55,18 @@ MooTools.lang.set('nl-NL', 'Date', {
 	hoursUntil: 'ongeveer {delta} uur vanaf nu',
 	dayUntil: '1 dag vanaf nu',
 	daysUntil: '{delta} dagen vanaf nu',
+	weekAgo: 'een week geleden',
+	weeksAgo: '{delta} weken geleden',
+	monthAgo: 'een maand geleden',
+	monthsAgo: '{delta} maanden geleden',
+	yearthAgo: 'een jaar geleden',
+	yearsAgo: '{delta} jaar geleden',
+
 	weekUntil: 'over een week',
 	weeksUntil: 'over {delta} weken',
 	monthUntil: 'over een maand',
 	monthsUntil: 'over {delta} maanden',
 	yearUntil: 'over een jaar',
-	yearsUntil: 'over {delta} jaar'
-	
+	yearsUntil: 'over {delta} jaar' 
+
 });

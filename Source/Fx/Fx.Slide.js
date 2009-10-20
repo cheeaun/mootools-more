@@ -1,12 +1,22 @@
 /*
-Script: Fx.Slide.js
-	Effect to slide an element in and out of view.
+---
 
-	License:
-		MIT-style license.
+script: Fx.Slide.js
 
-	Authors:
-		Valerio Proietti
+description: Effect to slide an element in and out of view.
+
+license: MIT-style license
+
+authors:
+- Valerio Proietti
+
+requires:
+- core:1.2.4/Fx Element.Style
+- /MooTools.More
+
+provides: [Fx.Slide]
+
+...
 */
 
 Fx.Slide = new Class({

@@ -1,14 +1,23 @@
 /*
-Script: Form.Validator.German.js
-	Date messages for German.
+---
 
-	License:
-		MIT-style license.
+script: Form.Validator.German.js
 
-	Authors: 
-		Frank Rossi
-		Ulrich Petri
+description: Date messages for German.
 
+license: MIT-style license
+
+authors: 
+- Frank Rossi
+- Ulrich Petri
+
+requires:
+- /Lang
+- /Form.Validator
+
+provides: [Form.Validator.German]
+
+...
 */
 
 MooTools.lang.set('de-DE', 'Form.Validator', {

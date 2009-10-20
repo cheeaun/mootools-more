@@ -1,14 +1,23 @@
 /*
-Script: Form.Validator.Catalan.js
-	Date messages for Catalan.
+---
 
-	License:
-		MIT-style license.
+script: Form.Validator.Catalan.js
 
-	Authors:
-		Miquel Hudin
-		Alfons Sanchez
+description: Date messages for Catalan.
 
+license: MIT-style license
+
+authors:
+- Miquel Hudin
+- Alfons Sanchez
+
+requires:
+- /Lang
+- /Form.Validator
+
+provides: [Form.Validator.Catalan]
+
+...
 */
 
 MooTools.lang.set('ca-CA', 'Form.Validator', {

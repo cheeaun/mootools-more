@@ -1,14 +1,23 @@
 /*
-Script: Date.Italian.js
-	Date messages for Italian.
+---
 
-	License:
-    	MIT-style license.
+script: Date.Italian.js
 
-	Authors:
-		Andrea Novero
-		Valerio Proietti
+description: Date messages for Italian.
 
+license: MIT-style license.
+
+authors:
+- Andrea Novero
+- Valerio Proietti
+
+requires:
+- /Lang
+- /Date
+
+provides: [Date.Italian]
+
+...
 */
  
 MooTools.lang.set('it-IT', 'Date', {

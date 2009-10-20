@@ -1,12 +1,22 @@
 /*
-Script: Assets.js
-	Provides methods to dynamically load JavaScript, CSS, and Image files into the document.
+---
 
-	License:
-		MIT-style license.
+script: Assets.js
 
-	Authors:
-		Valerio Proietti
+description: Provides methods to dynamically load JavaScript, CSS, and Image files into the document.
+
+license: MIT-style license
+
+authors:
+- Valerio Proietti
+
+requires:
+- core:1.2.4/Element.Event
+- /MooTools.More
+
+provides: [Assets]
+
+...
 */
 
 var Asset = {

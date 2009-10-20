@@ -1,16 +1,29 @@
 /*
-Script: Date.js
-	Extends the Date native object to include methods useful in managing dates.
+---
 
-	License:
-		MIT-style license.
+script: Date.js
 
-	Authors:
-		Aaron Newton
-		Nicholas Barthelemy - https://svn.nbarthelemy.com/date-js/
-		Harald Kirshner - mail [at] digitarald.de; http://digitarald.de
-		Scott Kyle - scott [at] appden.com; http://appden.com
+description: Extends the Date native object to include methods useful in managing dates.
 
+license: MIT-style license
+
+authors:
+- Aaron Newton
+- Nicholas Barthelemy - https://svn.nbarthelemy.com/date-js/
+- Harald Kirshner - mail [at] digitarald.de; http://digitarald.de
+- Scott Kyle - scott [at] appden.com; http://appden.com
+
+requires:
+- core:1.2.4/Array
+- core:1.2.4/String
+- core:1.2.4/Number
+- core:1.2.4/Lang
+- core:1.2.4/Date.English.US
+- /MooTools.More
+
+provides: [Date]
+
+...
 */
 
 (function(){

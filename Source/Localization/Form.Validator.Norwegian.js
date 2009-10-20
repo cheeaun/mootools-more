@@ -1,13 +1,22 @@
 /*
-Script: Form.Validator.Norwegian.js
-	Form.Validator messages in Norwegian.
+---
 
-	License:
-		MIT-style license.
+script: Form.Validator.Norwegian.js
 
-	Authors:
-		Espen 'Rexxars' Hovlandsdal
+description: Form.Validator messages in Norwegian.
 
+license: MIT-style license
+
+authors:
+- Espen 'Rexxars' Hovlandsdal
+
+requires:
+- /Lang
+- /Form.Validator
+
+provides: [Form.Validator.Norwegian]
+
+...
 */
 
 MooTools.lang.set('no-NO', 'Form.Validator', {

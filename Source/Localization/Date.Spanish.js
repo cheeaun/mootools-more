@@ -1,13 +1,22 @@
 /*
-Script: Date.Spanish.US.js
-	Date messages for Spanish.
+---
 
-	License:
-		MIT-style license.
+script: Date.Spanish.US.js
 
-	Authors:
-		Ãlfons Sanchez
+description: Date messages for Spanish.
 
+license: MIT-style license
+
+authors:
+- Ãlfons Sanchez
+
+requires:
+- /Lang
+- /Date
+
+provides: [Date.Spanish]
+
+...
 */
 
 MooTools.lang.set('es-ES', 'Date', {

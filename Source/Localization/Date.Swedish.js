@@ -1,13 +1,22 @@
 /*
-Script: Date.Swedish.js
-	Date messages for Swedish (SE).
+---
 
-	License:
-		MIT-style license.
+script: Date.Swedish.js
 
-	Authors:
-		Martin Lundgren
+description: Date messages for Swedish (SE).
 
+license: MIT-style license
+
+authors:
+- Martin Lundgren
+
+requires:
+- /Lang
+- /Date
+
+provides: [Date.Swedish]
+
+...
 */
 
 MooTools.lang.set('sv-SE', 'Date', {

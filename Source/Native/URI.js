@@ -1,12 +1,23 @@
 /*
-Script: URI.js
-	Provides methods useful in managing the window location and uris.
+---
 
-	License:
-		MIT-style license.
+script: URI.js
 
-	Authors:
-		Sebastian Markbåge, Aaron Newton
+description: Provides methods useful in managing the window location and uris.
+
+license: MIT-style license
+
+authors:
+- Sebastian Markbåge
+- Aaron Newton
+
+requires:
+- core:1.2.4/Selectors
+- /String.QueryString
+
+provides: URI
+
+...
 */
 
 var URI = new Class({

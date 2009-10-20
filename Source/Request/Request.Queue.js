@@ -1,12 +1,23 @@
 /*
-Script: Request.Queue.js
-	Controls several instances of Request and its variants to run only one request at a time.
+---
 
-	License:
-		MIT-style license.
+script: Request.Queue.js
 
-	Authors:
-		Aaron Newton
+description: Controls several instances of Request and its variants to run only one request at a time.
+
+license: MIT-style license
+
+authors:
+- Aaron Newton
+
+requires:
+- core:1.2.4/Element
+- core:1.2.4/Request
+- /Log
+
+provides: [Request.Queue]
+
+...
 */
 
 Request.Queue = new Class({

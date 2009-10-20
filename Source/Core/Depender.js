@@ -1,12 +1,24 @@
 /*
-Script: Depender.js
-	A stand alone dependency loader for the MooTools library.
+---
 
-	License:
-		MIT-style license.
+script: Depender.js
 
-	Authors:
-		Aaron Newton
+description: A stand alone dependency loader for the MooTools library.
+
+license: MIT-style license
+
+authors:
+- Aaron Newton
+
+requires:
+- core:1.2.4/Element.Events
+- core:1.2.4/Request.JSON
+- /MooTools.More
+- /Log
+
+provides: Depender
+
+...
 */
 
 var Depender = {

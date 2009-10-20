@@ -1,14 +1,23 @@
 /*
-Script: Date.Danish.js
-	Date messages for Danish.
+---
 
-	License:
-		MIT-style license.
+script: Date.Danish.js
 
-	Authors:
-		Martin Overgaard
-		Henrik Hansen
+description: Date messages for Danish.
 
+license: MIT-style license
+
+authors:
+- Martin Overgaard
+- Henrik Hansen
+
+requires:
+- /Lang
+- /Date
+
+provides: [Date.Danish]
+
+...
 */
  
 MooTools.lang.set('da-DK', 'Date', {

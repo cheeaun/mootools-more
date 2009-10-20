@@ -1,14 +1,23 @@
 /*
-Script: Date.French.js
-	Date messages in French.
+---
 
-	License:
-		MIT Style License
+script: Date.French.js
 
-	Authors:
-		Nicolas Sorosac
-    Antoine Abt
+description: Date messages in French.
 
+license: MIT-style license
+
+authors:
+- Nicolas Sorosac
+- Antoine Abt
+
+requires:
+- /Lang
+- /Date
+
+provides: [Date.French]
+
+...
 */
  
 MooTools.lang.set('fr-FR', 'Date', {
@@ -39,7 +48,7 @@ MooTools.lang.set('fr-FR', 'Date', {
 	weeksAgo: 'il y a {delta} semaines',
 	monthAgo: 'il y a 1 mois',
 	monthsAgo: 'il y a {delta} mois',
-	yearAgo: 'il y a 1 an',
+	yearthAgo: 'il y a 1 an',
 	yearsAgo: 'il y a {delta} ans',
 	lessThanMinuteUntil: 'dans moins d\'une minute',
 	minuteUntil: 'dans une minute',

@@ -1,13 +1,22 @@
 /*
-Script: Form.Validator.Spanish.js
-	Date messages for Spanish.
+---
 
-	License:
-		MIT-style license.
+script: Form.Validator.Spanish.js
 
-	Authors:
-		Ãlfons Sanchez
+description: Date messages for Spanish.
 
+license: MIT-style license
+
+authors:
+- Ãlfons Sanchez
+
+requires:
+- /Lang
+- /Form.Validator
+
+provides: [Form.Validator.Spanish]
+
+...
 */
 
 MooTools.lang.set('es-ES', 'Form.Validator', {
