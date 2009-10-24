@@ -126,7 +126,7 @@ var Accordion = Fx.Accordion = new Class({
 		this.internalChain.chain(function(){
 			if (this.options.returnHeightToAuto) {
 				var el = this.elements[index];
-				el.setStyle('height', 'auto');
+				if (el) el.setStyle('height', 'auto');
 			};
 		}.bind(this));
 		return useFx ? this.start(obj) : this.set(obj);
