@@ -25,12 +25,14 @@ Fx.Slide = new Class({
 
 	options: {
 		mode: 'vertical',
+		wrapper: false,
 		hideOverflow: true
 	},
 
 	initialize: function(element, options){
 		this.addEvent('complete', function(){
 			this.open = (this.wrapper['offset' + this.layout.capitalize()] != 0);
+			if (this.open) this.wrapper.setStyle('height', '');
 			if (this.open && Browser.Engine.webkit419) this.element.dispose().inject(this.wrapper);
 		}, true);
 		this.element = this.subject = document.id(element);
@@ -38,6 +40,7 @@ Fx.Slide = new Class({
 		var wrapper = this.element.retrieve('wrapper');
 		var styles = this.element.getStyles('margin', 'position', 'overflow');
 		if (this.options.hideOverflow) styles = $extend(styles, {overflow: 'hidden'});
+		if (this.options.wrapper) wrapper = document.id(this.options.wrapper).setStyles(styles);
 		this.wrapper = wrapper || new Element('div', {
 			styles: styles
 		}).wraps(this.element);

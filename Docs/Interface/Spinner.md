@@ -31,7 +31,7 @@ Adds a semi-transparent overlay over a DOM element with a 'spinning' ajax icon.
 
 ### Styles
 
-You can style the layer and its contents by just defining a css style for the class names specified in the options class name (these default to ".spinner", ".spinner-content", and ".spinner-img"). You can download the default styles and spinner image here: [spinner.css](http://mootools.net/releases/mootools-more-1.2.4.1/Styles/Interface/Spinner/spinner.css), [spinner.gif](http://mootools.net/releases/mootools-more-1.2.4.1/Styles/Interface/Spinner/spinner.gif)
+You can style the layer and its contents by just defining a css style for the class names specified in the options class name (these default to ".spinner", ".spinner-content", and ".spinner-img"). You can download the default styles and spinner image here: [spinner.css](http://github.com/mootools/mootools-more/raw/master/Styles/Interface/Spinner/spinner.css), [spinner.gif](http://github.com/mootools/mootools-more/raw/master/Styles/Interface/Spinner/spinner.gif)
 
 ### Events
 
@@ -208,7 +208,7 @@ Sets a default [Spinner][] instance for an Element.
 
 #### Examples
 
-	el.set('spinner', {msg: 'one moment...'});
+	el.set('spinner', {message: 'one moment...'});
 	el.spin(); //obscure the element with the spinner
 	el.unspin(); //hide the spinner
 
@@ -231,7 +231,7 @@ Gets the default [Spinner][] instance for the Element.
 
 #### Examples
 
-	el.set('spinner', {msg: 'one moment...'});
+	el.set('spinner', {message: 'one moment...'});
 	el.spin(); //show the spinner
 	el.get('spinner'); //The Spinner instance.
 

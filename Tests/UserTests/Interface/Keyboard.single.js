@@ -24,7 +24,19 @@
 						},
 						'esc': function(){
 							$('escape').toggleClass('active');
+						},
+						'shift+;': function(){
+							$('colon').toggleClass('active');
+						},
+						']': function(){
+							$('bracket').toggleClass('active');
 						}
+					},
+					onActivate: function(){
+						console.log('activated keyboard');
+					},
+					onDeactivate: function(){
+						console.log('deactivated keyboard');
 					},
 					active: true
 				});

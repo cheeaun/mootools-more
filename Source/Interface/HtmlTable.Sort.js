@@ -57,6 +57,7 @@ HtmlTable = Class.refactor(HtmlTable, {
 	},
 
 	attachSorts: function(attach){
+		this.element.removeEvents('click:relay(th)');
 		this.element[$pick(attach, true) ? 'addEvent' : 'removeEvent']('click:relay(th)', this.bound.headClick);
 	},
 
@@ -72,8 +73,14 @@ HtmlTable = Class.refactor(HtmlTable, {
 
 		// auto-detect
 		this.parsers = $$(this.head.cells).map(function(cell, index) {
-			if (!force && (cell.hasClass(this.options.classNoSort) || cell.retrieve('htmltable-sort'))) return cell.retrieve('htmltable-sort');
-			var sortSpan = new Element('span', {'html': '&#160;', 'class': this.options.classSortSpan}).inject(cell, 'top');
+			if (!force && (cell.hasClass(this.options.classNoSort) || cell.retrieve('htmltable-parser'))) return cell.retrieve('htmltable-parser');
+			var thDiv = new Element('div');
+			$each(cell.childNodes, function(node) {
+				thDiv.adopt(node);
+			});
+			thDiv.inject(cell);
+			var sortSpan = new Element('span', {'html': '&#160;', 'class': this.options.classSortSpan}).inject(thDiv, 'top');
+			
 			this.sortSpans.push(sortSpan);
 
 			var parser = parsers[index], 
@@ -86,9 +93,8 @@ HtmlTable = Class.refactor(HtmlTable, {
 				HtmlTable.Parsers.some(function(current) {
 					var match = current.match;
 					if (!match) return false;
-					if (Browser.Engine.trident) return false;
 					for (var i = 0, j = rows.length; i < j; i++) {
-						var text = rows[i].cells[index].get('html').clean();
+						var text = $(rows[i].cells[index]).get('html').clean();
 						if (text && match.test(text)) {
 							parser = current;
 							return true;
@@ -104,7 +110,8 @@ HtmlTable = Class.refactor(HtmlTable, {
 	},
 
 	headClick: function(event, el) {
-		if (!this.head) return;
+		console.log(el);
+		if (!this.head || el.hasClass(this.options.classNoSort)) return;
 		var index = Array.indexOf(this.head.cells, el);
 		this.sort(index);
 		return false;
@@ -221,7 +228,7 @@ HtmlTable = Class.refactor(HtmlTable, {
 	},
 
 	disableSort: function(){
-		this.element.remove(this.options.classSortable);
+		this.element.removeClass(this.options.classSortable);
 		this.attachSorts(false);
 		this.sortSpans.each(function(span) { span.destroy(); });
 		this.sortSpans.empty();
@@ -236,7 +243,7 @@ HtmlTable.Parsers = new Hash({
 	'date': {
 		match: /^\d{2}[-\/ ]\d{2}[-\/ ]\d{2,4}$/,
 		convert: function() {
-			return Date.parse(this.get('text').format('db'));
+			return Date.parse(this.get('text')).format('db');
 		},
 		type: 'date'
 	},
